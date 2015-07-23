@@ -1,6 +1,7 @@
 {
     "name": "rlima/laravel5doctrine-odm",
-    "description": "Doctrine 2 and Laravel 5.1 provider",
+    "description": "Laravel 5.1 module that provides Doctrine MongoDB ODM functionality",
+    "keywords" : ["doctrine", "odm", "mongodb", "module", "laravel"],
     "license": "MIT",
     "authors": [
         {
