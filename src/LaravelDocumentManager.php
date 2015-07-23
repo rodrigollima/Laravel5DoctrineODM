@@ -6,13 +6,17 @@ use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 
-class LaravelDocumentManager implements DocumentManagerInterface
+class LaravelDocumentManager implements ODM
 {
     /**
      * @var null
      */
     private $dm = null;
 
+    /**
+     *
+     * @param $config
+     */
     public function __construct($config)
     {
         $server = $config['connection'][$config['default_connection']];
@@ -30,14 +34,36 @@ class LaravelDocumentManager implements DocumentManagerInterface
         $configuration->setMetadataDriverImpl($anotationReader);
         $configuration->setDefaultDB($server['dbname']);
 
-        $this->documentManager = DocumentManager::create(new Connection(), $configuration);
+        $this->dm = DocumentManager::create(new Connection(), $configuration);
     }
 
     /**
+     * Get Document Manager Object
      * @return Doctrine\ODM\MongoDB\DocumentManager
      */
     public function getDocumentManager()
     {
         return $this->dm;
+    }
+
+    /**
+     * @param $document
+     * @return $this
+     */
+    public function persist($document)
+    {
+        $this->dm->persist($document);
+        return $this;
+    }
+
+    /**
+     * @param null $document
+     * @param array $options
+     * @return $this
+     */
+    public function flush($document = null, $options = array())
+    {
+        $this->dm->flush($document, $options);
+        return $this;
     }
 }

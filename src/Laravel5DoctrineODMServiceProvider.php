@@ -2,7 +2,6 @@
 
 use Illuminate\Support\ServiceProvider;
 
-
 class Laravel5DoctrineODMServiceProvider extends ServiceProvider
 {
     /**
@@ -28,7 +27,7 @@ class Laravel5DoctrineODMServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Rlima\Laravel5DoctrineODM\DocumentManagerInterface', function ($app) {
+        $this->app->singleton('Rlima\Laravel5DoctrineODM\ODM', function ($app) {
             try {
                 return new LaravelDocumentManager($app['config']['doctrine']);
             } catch (\Exception $e ){
