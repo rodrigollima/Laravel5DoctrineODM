@@ -1,0 +1,21 @@
+{
+    "name": "rlima/laravel5doctrine-odm",
+    "description": "Doctrine 2 and Laravel 5.1 provider",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rodrigo Lima",
+            "email": "rlima@webeleven.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "doctrine/mongodb": "> 1.1.5,<2.0",
+        "doctrine/mongodb-odm": "~1.0.0-BETA13@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rlima\\Laravel5DoctrineODM\\" : "/src/"
+        }
+    }
+}
